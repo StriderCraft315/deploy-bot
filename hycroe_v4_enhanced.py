@@ -893,7 +893,6 @@ class DeploymentView(discord.ui.View):
             await execute_lxc(f"lxc config set {container_name} security.privileged true")
             await execute_lxc(f"lxc config device add {container_name} fuse unix-char path=/dev/fuse")
             await execute_lxc(f"lxc config set {container_name} linux.kernel_modules overlay,loop,nf_nat,ip_tables,ip6_tables,netlink_diag,br_netfilter")
-            await execute_lxc(f"lxc config device add {container_name} fuse unix-char path=/dev/fuse")
             
             # Save to database
             vps_info = {
@@ -2372,4 +2371,5 @@ if __name__ == "__main__":
         bot.run(DISCORD_TOKEN)
     except Exception as e:
         logger.error(f"Failed to start bot: {e}")
+
 
